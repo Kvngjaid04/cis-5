@@ -1,0 +1,82 @@
+Welcome to Yahtzee!
+
+Round 1
+Rolled: 4 1 5 1 1
+Rolled: 4 2 5 1 1
+Rolled: 5 4 2 1 4
+Computer rolled: 1 5 1 6 1
+Computer's score for this round: 14
+Round 2
+Rolled: 4 4 1 3 1
+Rolled: 3 2 6 4 3
+Rolled: 2 6 1 4 4
+Computer rolled: 1 1 6 6 6
+Computer's score for this round: 20
+Round 3
+Rolled: 4 2 3 4 2
+Rolled: 4 4 6 2 3
+Rolled: 4 3 4 2 5
+Computer rolled: 4 4 1 2 6
+Computer's score for this round: 17
+Round 4
+Rolled: 1 3 5 2 4
+Rolled: 2 2 5 5 5
+Rolled: 2 3 1 4 6
+Computer rolled: 6 5 1 4 6
+Computer's score for this round: 22
+Round 5
+Rolled: 1 5 3 2 1
+Rolled: 5 6 4 5 1
+Rolled: 3 6 1 5 1
+Computer rolled: 4 1 6 6 3
+Computer's score for this round: 20
+Round 6
+Rolled: 5 1 5 3 2
+Rolled: 2 6 4 6 3
+Rolled: 4 6 2 4 2
+Computer rolled: 2 2 5 3 5
+Computer's score for this round: 17
+Round 7
+Rolled: 3 4 2 1 2
+Rolled: 6 2 6 5 6
+Rolled: 3 1 6 5 3
+Computer rolled: 6 1 1 3 6
+Computer's score for this round: 17
+Round 8
+Rolled: 3 4 4 2 5
+Rolled: 3 1 5 5 4
+Rolled: 3 1 5 2 5
+Computer rolled: 6 1 6 6 5
+Computer's score for this round: 24
+Round 9
+Rolled: 5 2 4 3 6
+Rolled: 4 6 4 4 2
+Rolled: 2 1 4 3 6
+Computer rolled: 6 5 1 4 3
+Computer's score for this round: 19
+Round 10
+Rolled: 2 4 1 6 5
+Rolled: 5 5 3 2 2
+Rolled: 2 1 1 3 1
+Computer rolled: 5 6 6 2 4
+Computer's score for this round: 23
+Round 11
+Rolled: 5 1 2 6 3
+Rolled: 1 6 5 5 1
+Rolled: 5 6 5 5 3
+Computer rolled: 1 1 6 4 3
+Computer's score for this round: 15
+Round 12
+Rolled: 1 3 1 2 5
+Rolled: 1 6 2 6 5
+Rolled: 5 2 6 4 2
+Computer rolled: 6 3 1 5 5
+Computer's score for this round: 20
+Round 13
+Rolled: 1 1 3 3 6
+Rolled: 5 2 6 4 5
+Rolled: 6 5 5 6 4
+Computer rolled: 1 6 1 2 3
+Computer's score for this round: 13
+You finished with a score of 000 and had an average of 0.00 points per round
+Computer wins!

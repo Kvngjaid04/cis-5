@@ -1,0 +1,12 @@
+Welcome to Yahtzee!
+
+Round 1
+Rolled: 6 6 4 2 5
+Rolled: 1 5 1 6 5
+Rolled: 5 1 4 2 4
+Computer rolled: 7 6 5 3 8
+Computer's score for this round: 29
+Round 2
+Computer rolled: 6 4 3 8 4
+Computer's score for this round: 25
+You finished with a score of 032 and had an average of 2.46 points per round

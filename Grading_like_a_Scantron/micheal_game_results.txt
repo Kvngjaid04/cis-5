@@ -1,0 +1,14 @@
+Welcome to Yahtzee!
+
+Round 1
+Rolled: 2 5 2 6 5
+Rolled: 2 1 1 6 6
+Rolled: 3 5 6 6 6
+Category: 6, Score: 18
+Upper section score: 18
+Lower section score: 0
+Round 2
+Category: 13, Score: 26
+Upper section score: 18
+Lower section score: 26
+Final score: 44
