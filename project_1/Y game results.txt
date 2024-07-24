@@ -1,0 +1,8 @@
+Welcome to Yahtzee!
+
+
+Round 1
+End of round 13
+Score for this round: 62913 points
+
+You finished with a score of 62913 points with an average of 4839 point(s) per round

@@ -1,0 +1,18 @@
+Welcome to Yahtzee!
+
+
+Round 1
+Rolled: 6 6 2 3 4
+Rolled: 4 5 3 1 4
+Rolled: 1 1 4 6 6
+End of round 1
+Score for this round: 18 points
+
+
+Round 2
+Rolled: 4 4 5 3 2
+End of round 2
+Score for this round: 18 points
+
+
+Round 3

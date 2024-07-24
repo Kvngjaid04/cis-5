@@ -1,0 +1,62 @@
+/* 
+ * Author: 
+ * Created on 
+ * Purpose:  
+ */
+
+//System Libraries
+#include <iostream>
+using namespace std;
+
+//User Libraries
+
+//Global Constants - Math/Physics Constants, Conversions,
+//                   2-D Array Dimensions
+
+//Function Prototypes
+int collatz(int);//3n+1 sequence
+
+//Execution Begins Here
+int main(int argc, char** argv) {
+    //Declare Variables
+    int n, n1;
+    
+    //Initialize Variables
+    cout<<"Collatz Conjecture Test"<<endl;
+    cout<<"Input a sequence start"<<endl;
+    cin>>n;
+    
+    //Process/Map inputs to outputs
+    cout << n << ", ";
+    n1=n;
+    do  {   if (n1 % 2){
+                n1= 3 * n1 + 1;
+            }
+            else {n1/=2;}
+                
+            if (n1 != 1) {
+                cout << n1 << ", ";
+            }else {
+                cout << n1;
+            }
+        }
+    while (n1!=1);
+            cout <<endl;
+    //Output data
+    cout<<"Sequence start of "<<n<<" cycles to 1 in "<<
+            collatz(n)<<" steps";
+    //Exit stage right!
+    return 0;
+}
+
+int collatz( int n){
+    int count = 1;
+    do{   if (n % 2){
+                n= 3 * n + 1;
+            }
+            else {n/=2;}
+            
+            count++;}
+    while (n!=1);
+    return count;
+}
