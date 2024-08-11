@@ -1,0 +1,12 @@
+Welcome to Yahtzee!
+Player: ireoluwa
+
+Round 1
+Rolled: 5 4 6 2 3 
+Large Straight!
+Rolled: 5 1 6 3 4 
+Small Straight!
+Rolled: 5 3 6 4 6 
+Small Straight!
+Score for this round: 24 points
+Round 2

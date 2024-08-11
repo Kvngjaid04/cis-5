@@ -1,0 +1,12 @@
+Welcome to Yahtzee!
+Player: 
+
+Round 1
+Rolled: 6 3 4 6 2 
+Rolled: 4 4 2 4 5 
+Three of a kind!
+Rolled: 5 2 2 2 5 
+Full House!
+Score for this round: 16 points
+
+Round 2

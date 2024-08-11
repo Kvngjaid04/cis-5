@@ -1,0 +1,11 @@
+Welcome to Yahtzee!
+Player: rr
+
+Round 1
+Rolled: 4 6 4 1 4 
+Three of a kind!
+Rolled: 2 5 1 3 6 
+Rolled: 5 1 1 3 4 
+Score for this round: 14 points
+Round 2
+Rolled: 5 3 4 4 3 

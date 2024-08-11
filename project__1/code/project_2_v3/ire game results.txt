@@ -1,0 +1,3 @@
+Welcome to Yahtzee!
+Round 1
+Rolled: 2 1 1 1 6 

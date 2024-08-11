@@ -1,0 +1,7 @@
+Welcome to Yahtzee!
+Player: ie
+
+Round 1
+Rolled: 1 2 4 3 3 
+Small Straight!
+Rolled: 5 5 4 4 6 

@@ -1,0 +1,98 @@
+Welcome to Yahtzee!
+Player: yt
+
+Round 1
+Rolled: 4 3 3 5 2 
+Small Straight!
+Rolled: 5 4 1 3 5 
+Rolled: 5 4 4 6 5 
+Score for this round: 24 points
+
+Round 2
+Rolled: 3 4 5 3 1 
+Rolled: 5 5 4 3 5 
+Three of a kind!
+Rolled: 5 1 4 4 2 
+Score for this round: 16 points
+
+Round 3
+Rolled: 6 1 3 2 3 
+Rolled: 3 6 2 2 2 
+Three of a kind!
+Rolled: 6 4 6 3 6 
+Three of a kind!
+Score for this round: 25 points
+
+Round 4
+Rolled: 6 3 1 4 5 
+Small Straight!
+Rolled: 2 1 4 3 3 
+Small Straight!
+Rolled: 6 5 2 1 3 
+Score for this round: 17 points
+
+Round 5
+Rolled: 1 5 3 3 6 
+Rolled: 3 6 3 2 5 
+Rolled: 4 1 2 2 3 
+Small Straight!
+Score for this round: 12 points
+
+Round 6
+Rolled: 5 1 6 4 2 
+Rolled: 2 5 2 3 1 
+Rolled: 3 3 3 2 1 
+Three of a kind!
+Score for this round: 12 points
+
+Round 7
+Rolled: 5 6 5 5 2 
+Three of a kind!
+Rolled: 2 5 5 5 6 
+Three of a kind!
+Rolled: 3 6 4 3 1 
+Score for this round: 17 points
+
+Round 8
+Rolled: 1 5 5 4 2 
+Rolled: 5 3 4 4 6 
+Small Straight!
+Rolled: 2 4 6 5 5 
+Score for this round: 22 points
+
+Round 9
+Rolled: 6 1 4 3 6 
+Rolled: 4 4 2 6 2 
+Rolled: 6 1 6 3 1 
+Score for this round: 17 points
+
+Round 10
+Rolled: 6 1 5 3 4 
+Small Straight!
+Rolled: 5 1 1 2 4 
+Rolled: 4 4 2 3 2 
+Score for this round: 15 points
+
+Round 11
+Rolled: 4 2 2 6 2 
+Three of a kind!
+Rolled: 5 3 6 5 6 
+Rolled: 5 4 6 4 6 
+Score for this round: 25 points
+
+Round 12
+Rolled: 4 2 1 3 4 
+Small Straight!
+Rolled: 2 5 2 6 6 
+Rolled: 5 3 1 4 5 
+Score for this round: 18 points
+
+Round 13
+Rolled: 2 2 5 2 5 
+Full House!
+Rolled: 6 4 5 3 2 
+Large Straight!
+Rolled: 4 6 3 2 3 
+Score for this round: 18 points
+
+You finished with a score of 238 points with an average of 18 point(s) per round

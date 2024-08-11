@@ -1,176 +1,175 @@
 /*
- * Author: Ireoluwa
+ * Author: Ireoluwa (updated by Claude)
  * Created on June 18, 2024, 12:19 PM
- * Purpose: a game of yatzhee
+ * Purpose: a game of Yahtzee
  */
 
-// System Libraries
-#include <iostream>   // I/O library for input and output operations
-#include <ctime>      // Library to work with time functions
-#include <cstdlib>    // random number generation
-#include <iomanip>    // I/O manipulator
-#include <string>     // For using std::string
-#include <fstream>    // For file input and output
+#include <iostream>
+#include <ctime>
+#include <cmath>
+#include <cstdlib>
+#include <iomanip>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
 
 using namespace std;
 
-// User Libraries
-
-// Global Constants - Mathematical, Scientific, Conversions
-
-// Higher Dimensions go here. No Variables
-
 // Function Prototypes
-void rollmch(int&,int&,int&, int&, int&,bool, bool, bool, bool, bool, int, int);
-void holdmch(bool&,bool&,bool&,bool&,bool&,char&, int&, int&, int&, int&, int&);
-void dceloop (int&, int&, int&, int&, int&, bool&, bool&, bool&, bool&, bool&,
-              int&, char&, char&, const int, const int, int&);
-void scecalc(int, int, int, int, int, int&, int&);
-void savemch();
-void intro(string &);
+void rollDice(vector<int>& dice, const vector<bool>& hold, int sides = 6);
+int calculateScore(const vector<int>& dice);
+void calculateScore(const vector<int>& dice, int& score);
+bool isYahtzee(const vector<int>& dice);
+bool isLargeStraight(vector<int> dice);
+void displayRules();
+void quitGame(int ttlScre);
+void printDiceValues(const vector<int>& dice);
+void updateScoreboard(vector<vector<int>>& scoreboard, int round, int score);
+void intro(string& Yname);
+void holdDice(vector<bool>& hold, const vector<int>& dice);
+void playRound(vector<int>& dice, vector<bool>& hold, int& ttlScre, int round, vector<vector<int>>& scoreboard);
 
-// Execution Begins Here
-int main(int argc, char** argv) {
-    // Setting the random number seed
+int main() {
     srand(static_cast<unsigned int>(time(0)));
 
-    // Declaring Variables
-    const int maxdice = 6, mindice = 1; //Max and min value for a six-sided dice
-    char Gchoice, choice;  // Variable to store the user's game choice
-    int dice1, dice2, dice3, dice4, dice5,rllsLft, ttlScre;
-    bool hold1, hold2, hold3, hold4, hold5; // Boolean to track dice status
-    float ascore;
-    string Yname, filename;
+    vector<int> dice(5);
+    vector<bool> hold(5, false);
+    vector<vector<int>> scoreboard(13, vector<int>(2));
+    int ttlScre = 0;
+    string Yname;
 
-    // Initialize Variables
-    ttlScre = 0;
     intro(Yname);
     
-    // Game loop to manage multiple rounds
     for (int round = 1; round <= 13; round++) {
-        rllsLft = 3; // Number of rolls in the current round
-        hold1 = hold2 = hold3 = hold4 = hold5 = false; // Reset dice hold status 
-        cout << "Round " << round << endl;
-
-        // Loop to handle rolling the dice
-        dceloop (dice1, dice2, dice3, dice4, dice5, hold1, hold2, hold3, hold4,
-                 hold5, rllsLft, Gchoice, choice, maxdice, mindice, ttlScre);
-        
-         // Calculate score for the current round
-        scecalc(dice1, dice2, dice3, dice4, dice5, round, ttlScre);  
-        
+        playRound(dice, hold, ttlScre, round, scoreboard);
     }
-    // Exit
-    return 0; 
+
+    float ascore = static_cast<float>(ttlScre) / 13.0f;
+    int avgScore = round(ascore);
+    cout << "You finished with a score of " << setw(3) << setfill('0') 
+         << ttlScre << " points with an average of " << avgScore << " point(s) per round" << endl;
+
+    return 0;
 }
 
-// Introduction
-void intro(string &Yname)  // game intro
-    {
+void intro(string& Yname) {
     cout << "Welcome to Yahtzee!" << endl;
-    cout << "Rules: Roll 5 dice and try to get the best";
-    cout << " combinations for points." << endl;
-    cout << "You can (R)oll to roll the dice or (H)old";
-    cout << " to hold specific dice and roll the others." << endl;
-    cout << "You have 3 rolls per turn and can play up";
-    cout << " to 13 rounds. Good luck!" << endl;
+    cout << "Rules: Roll 5 dice and try to get the best combinations for points." << endl;
+    cout << "You can (R)oll to roll the dice or (H)old to hold specific dice and roll the others." << endl;
+    cout << "You have 3 rolls per turn and can play up to 13 rounds. Good luck!" << endl;
     cout << "Enter your name: ";
     cin >> Yname;
     cout << endl << "Welcome " << Yname <<"!" << endl;
 }
 
-//roll mechanism
-void rollmch (int &dice1, int &dice2, int &dice3, int &dice4, int &dice5, 
-              bool hold1, bool hold2, bool hold3, bool hold4, bool hold5,
-              int maxdice, int mindice) {
-    // Generate a random number between mindice and maxdice for the dice
-    if (!hold1) dice1 = rand() % maxdice + mindice; 
-    if (!hold2) dice2 = rand() % maxdice + mindice;
-    if (!hold3) dice3 = rand() % maxdice + mindice;
-    if (!hold4) dice4 = rand() % maxdice + mindice;
-    if (!hold5) dice5 = rand() % maxdice + mindice;
-
-        cout << "You rolled: " << dice1 << " " << dice2 << " "; 
-        cout << dice3 << " " << dice4 << " " << dice5 <<endl;
-}
-
-//hold mechanism
-void holdmch (bool &hold1, bool &hold2, bool &hold3, bool &hold4, bool &hold5,
-              char &choice, int &dice1, int &dice2, int &dice3, int &dice4,
-              int &dice5){
-        cout << "Hold dice 1 (" << dice1 << ")? (Y/N): ";
-        // Get the user's choice for dice 1
-        cin >> choice; 
-        hold1 = (choice == 'Y' || choice == 'y');
-
-        // Repeat procedure for the rest of the dice
-        cout << "Hold dice 2 (" << dice2 << ")? (Y/N): ";
-        cin >> choice; 
-        hold2 = (choice == 'Y' || choice == 'y');
-
-        cout << "Hold dice 3 (" << dice3 << ")? (Y/N): ";
-        cin >> choice; 
-        hold3 = (choice == 'Y' || choice == 'y');
-
-        cout << "Hold dice 4 (" << dice4 << ")? (Y/N): ";
-        cin >> choice; 
-        hold4 = (choice == 'Y' || choice == 'y'); 
-
-        cout << "Hold dice 5 (" << dice5 << ")? (Y/N): ";
-        cin >> choice; 
-        hold5 = (choice == 'Y' || choice == 'y'); 
-}
-
- // Calculate score for the current round
-void scecalc(int dice1, int dice2, int dice3, int dice4, int dice5, int &round,
-                int &ttlScre) {
-    int rndScre = dice1 + dice2 + dice3 + dice4 + dice5;
-        ttlScre += rndScre;
-
-        cout << "End of round " << round << endl;
-        cout << "Score for this round: " << rndScre << endl;
-        cout << "Total score: " << ttlScre << endl << endl;
-}
-
- // Loop to handle rolling the dice
-void dceloop(int &dice1, int &dice2, int &dice3, int &dice4, int &dice5,
-             bool &hold1, bool &hold2, bool &hold3, bool &hold4, bool &hold5,
-             int &rllsLft, char &Gchoice, char &choice, const int maxdice, 
-             const int mindice, int& ttlScre) {
+void rollDice(vector<int>& dice, const vector<bool>& hold, int sides) {
+    static int rollCount = 0;
+    rollCount++;
+    cout << "Roll number: " << rollCount << endl;
     
-    do{
-        cout << "Do you want to (R)oll, (H)old, or (Q)uit?" << endl;
-        cin >> Gchoice; // Get the user's choice for the next action
+    for (int i = 0; i < 5; i++) {
+        if (!hold[i]) {
+            dice[i] = rand() % sides + 1;
+        }
+    }
+}
 
-        // Processing/Mapping Inputs to Outputs
-        switch (Gchoice) { // Switch statement to handle the user's choice
-            case 'R': // If the user chooses to roll the dice
+void holdDice(vector<bool>& hold, const vector<int>& dice) {
+    for (int i = 0; i < 5; i++) {
+        char choice;
+        cout << "Hold dice " << i+1 << " (" << dice[i] << ")? (Y/N): ";
+        cin >> choice;
+        hold[i] = (choice == 'Y' || choice == 'y');
+    }
+}
+
+void playRound(vector<int>& dice, vector<bool>& hold, int& ttlScre, int round, vector<vector<int>>& scoreboard) {
+    int rllsLft = 3;
+    fill(hold.begin(), hold.end(), false);
+    cout << "Round " << round << endl;
+
+    while (rllsLft > 0) {
+        char Gchoice;
+        cout << "Do you want to (R)oll, (H)old, (S)how rules, or (Q)uit?" << endl;
+        cin >> Gchoice;
+
+        switch (Gchoice) {
+            case 'R':
             case 'r':
-                rollmch(dice1, dice2, dice3, dice4, dice5, hold1, 
-                        hold2, hold3, hold4, hold5, maxdice, mindice);
-                --rllsLft;           // Decrement the number of rolls left
+                rollDice(dice, hold);
+                printDiceValues(dice);
+                if (isYahtzee(dice)) cout << "Yahtzee!" << endl;
+                else if (isLargeStraight(dice)) cout << "Large Straight!" << endl;
+                --rllsLft;
                 break;
-            case 'H': // If the user chooses to hold certain dice
+            case 'H':
             case 'h':
-                holdmch(hold1, hold2, hold3, hold4, hold5, choice,
-                        dice1, dice2, dice3, dice4, dice5);   break;
-
-            case 'Q': // If the user chooses to quit the game
+                holdDice(hold, dice);
+                break;
+            case 'S':
+            case 's':
+                displayRules();
+                break;
+            case 'Q':
             case 'q':
-                cout << "You Quit!" << endl;
-                cout << "You finished with a score of " << ttlScre ;
-                exit(0);
-            default: // If the user enters an invalid choice
+                quitGame(ttlScre);
+            default:
                 cout << "Invalid choice!" << endl;
         }
 
-        // Notify the user of remaining rolls
-        if (rllsLft > 0 && Gchoice != 'Q' && Gchoice != 'q') {
-            cout << "You have " << rllsLft << " rolls left." <<endl<<endl;
+        if (rllsLft > 0) {
+            cout << "You have " << rllsLft << " rolls left." << endl << endl;
         }
+    }
 
-        // Continue while rolls are left and user hasn't quit
-    } while (rllsLft > 0 && Gchoice != 'Q' && Gchoice != 'q'); 
-    cout << endl; 
+    int rndScre = calculateScore(dice);
+    ttlScre += rndScre;
+    cout << "End of round " << round << endl;
+    cout << "Score for this round: " << rndScre << " points" << endl;
+    cout << "Total score: " << ttlScre << endl << endl;
 
+    updateScoreboard(scoreboard, round, rndScre);
+}
+
+int calculateScore(const vector<int>& dice) {
+    return accumulate(dice.begin(), dice.end(), 0);
+}
+
+void calculateScore(const vector<int>& dice, int& score) {
+    score = accumulate(dice.begin(), dice.end(), 0);
+}
+
+bool isYahtzee(const vector<int>& dice) {
+    return all_of(dice.begin() + 1, dice.end(), [&dice](int d) { return d == dice[0]; });
+}
+
+bool isLargeStraight(vector<int> dice) {
+    sort(dice.begin(), dice.end());
+    return (dice == vector<int>{1,2,3,4,5} || dice == vector<int>{2,3,4,5,6});
+}
+
+void displayRules() {
+    cout << "Yahtzee Rules:" << endl;
+    // Add detailed rules here
+}
+
+void quitGame(int ttlScre) {
+    cout << "You Quit!" << endl;
+    cout << "You finished with a score of " << ttlScre << endl;
+    exit(0);
+}
+
+void printDiceValues(const vector<int>& dice) {
+    cout << "You rolled: ";
+    for (int value : dice) {
+        cout << value << " ";
+    }
+    cout << endl;
+}
+
+void updateScoreboard(vector<vector<int>>& scoreboard, int round, int score) {
+    scoreboard[round-1][0] = round;
+    scoreboard[round-1][1] = score;
 }
